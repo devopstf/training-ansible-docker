@@ -1,0 +1,11 @@
+---
+- hosts: default
+  roles:
+    - docker
+    - git
+    - net-tools
+    - pip
+    - users
+
+  vars_files:
+    - ./vars/build-vars.yml

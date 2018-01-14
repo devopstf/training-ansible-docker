@@ -1,0 +1,46 @@
+# Creating three services based on CentOS 7 image built from our Dockerfile
+
+version: '3.0'
+
+services:
+
+  devopsbox-01:
+    #build: .
+    image: devopsman/devopsbox:dev
+    container_name: devopsbox-01
+    volumes:
+      - ./:/projects/ansible
+    ports:
+      - "2211:22"
+    networks:
+      - devops
+    restart: on-failure
+
+  devopsbox-02:
+    image: devopsman/devopsbox:dev
+    container_name: devopsbox-02
+    volumes:
+      - ./:/projects/ansible
+    ports:
+      - "2222:22"
+    networks:
+      - devops
+    restart: on-failure
+    depends_on:
+      - devopsbox-01
+
+  devopsbox-03:
+    image: devopsman/devopsbox:dev
+    container_name: devopsbox-03 
+    volumes:
+      - ./:/projects/ansible
+    ports:
+      - "2233:22"
+    networks:
+      - devops
+    restart: on-failure
+    depends_on:
+      - devopsbox-02
+
+networks:
+  devops:

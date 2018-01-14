@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+    - git
+    - net-tools
+    - pip
+
+  vars_files:
+    - ./vars/build-vars.yml

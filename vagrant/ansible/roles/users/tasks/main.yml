@@ -1,0 +1,37 @@
+- name: Make sure we have a 'wheel' group
+  group:
+    name: wheel
+    state: present
+
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+
+- name: Generate passwords
+  shell: python -c 'import crypt; print crypt.crypt("{{ upassword }}", "$6$random_salt")'   
+  register: genpass
+
+- user:
+    name: devopsman
+    generate_ssh_key: yes
+    comment: "devopsman"
+    groups: docker,vagrant,wheel
+    password: "{{ genpass.stdout }}"
+    
+- name: Creates directory
+  file: path=/home/devopsman/.ssh/ state=directory
+  
+- user:
+    name: root
+    generate_ssh_key: yes
+    password: "{{ genpass.stdout }}"
+    
+- name: Enable root SSH access
+  lineinfile: dest=/etc/ssh/sshd_config
+              line="PermitRootLogin yes"
+              state=present
+  notify: Restart sshd
+

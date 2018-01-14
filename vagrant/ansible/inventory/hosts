@@ -1,0 +1,6 @@
+[default]
+localhost ansible_connection=local
+
+[slaves]
+centos-02 ansible_user=vagrant ansible_password=vagrant
+centos-03 ansible_user=vagrant ansible_password=vagrant

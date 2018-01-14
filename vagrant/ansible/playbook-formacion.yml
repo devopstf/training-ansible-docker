@@ -1,0 +1,5 @@
+---
+- hosts: slaves
+  become: true
+  roles:
+    - formacion

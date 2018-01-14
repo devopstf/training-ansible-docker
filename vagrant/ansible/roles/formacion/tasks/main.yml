@@ -1,0 +1,30 @@
+---
+- name: Copy hello.sh script to Home directory
+  copy:
+    src: formacioncedei/scripts/hello.sh
+    dest: /home/vagrant/hello.sh
+    
+- name: Update hello.sh permission
+  file:
+    path: /home/vagrant/hello.sh
+    owner: vagrant
+    group: vagrant
+    mode: 0755
+  
+- name: Create keycard file from template  
+  template:
+    src: templates/keycard.j2
+    dest: /home/vagrant/keycard
+    owner: vagrant
+    group: vagrant
+    mode: "u=rw,g=rw,o=rwx"
+
+- name: Create folder under /home/vagrant
+  file:
+    path: /home/vagrant/unarchive 
+    state: directory
+    
+- name: Install nano editor
+  yum:
+    name: nano
+    state: present
