@@ -25,8 +25,8 @@ The setup has been tested using two different environments:
 **Windows 7 Enterprise**
 
 * **Docker 17.12.0-ce** (_Docker Machine_ & _Docker Toolbox_)
-* **Vagrant 1.8.4**
 * **VirtualBox 5.0.24**
+* **Vagrant 1.8.4**
     - ``vagrant-cachier --plugin-version 1.2.1``
     - ``vagrant-vbguest --plugin-version 0.12.0``
     - ``vagrant-proxyconf --plugin-version 1.5.2``
