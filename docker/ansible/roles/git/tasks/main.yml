@@ -1,2 +1,4 @@
 - name: install the latest version of Git
-  yum: name=git state=latest
+  apt:
+    name: git
+    state: latest

@@ -1,2 +1,4 @@
 - name: install the latest version of pip
-  yum: name=python-pip state=latest
+  apt:
+    name: python-pip
+    state: latest

@@ -1,6 +1,10 @@
-[default]
+[controller]
 localhost ansible_connection=local
 
-[slaves]
-devopsbox-02 ansible_user=devopsman ansible_password=devopsman
-devopsbox-03 ansible_user=devopsman ansible_password=devopsman
+[nodes]
+devopsbox-02
+devopsbox-03
+
+# [nodes]
+# devopsbox-02 ansible_user=devopsman ansible_password=devopsman
+# devopsbox-03 ansible_user=devopsman ansible_password=devopsman

@@ -2,29 +2,29 @@
 - name: Copy hello.sh script to Home directory
   copy:
     src: formacioncedei/scripts/hello.sh
-    dest: /home/vagrant/hello.sh
+    dest: /home/devopsman/hello.sh
     
 - name: Update hello.sh permission
   file:
-    path: /home/vagrant/hello.sh
-    owner: vagrant
-    group: vagrant
+    path: /home/devopsman/hello.sh
+    owner: devopsman
+    group: devops
     mode: 0755
   
 - name: Create keycard file from template  
   template:
     src: templates/keycard.j2
-    dest: /home/vagrant/keycard
-    owner: vagrant
-    group: vagrant
+    dest: /home/devopsman/keycard
+    owner: devopsman
+    group: devops
     mode: "u=rw,g=rw,o=rwx"
 
-- name: Create folder under /home/vagrant
+- name: Create folder under home directory
   file:
-    path: /home/vagrant/unarchive 
+    path: /home/devopsman/unarchive 
     state: directory
     
 - name: Install nano editor
-  yum:
+  apt:
     name: nano
     state: present

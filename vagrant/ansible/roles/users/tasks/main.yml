@@ -14,7 +14,8 @@
   shell: python -c 'import crypt; print crypt.crypt("{{ upassword }}", "$6$random_salt")'   
   register: genpass
 
-- user:
+- name: Creates devospman user, generating anew password and a SSH key
+  user:
     name: devopsman
     generate_ssh_key: yes
     comment: "devopsman"
@@ -22,16 +23,20 @@
     password: "{{ genpass.stdout }}"
     
 - name: Creates directory
-  file: path=/home/devopsman/.ssh/ state=directory
-  
-- user:
+  file: 
+    path: /home/devopsman/.ssh/
+    state: directory
+
+- name: Creates root user, generating a new password and a SSH key
+  user:
     name: root
     generate_ssh_key: yes
     password: "{{ genpass.stdout }}"
     
 - name: Enable root SSH access
-  lineinfile: dest=/etc/ssh/sshd_config
-              line="PermitRootLogin yes"
-              state=present
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    line: "PermitRootLogin yes"
+    state: present
   notify: Restart sshd
 

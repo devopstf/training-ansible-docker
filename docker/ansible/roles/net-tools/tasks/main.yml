@@ -1,10 +1,9 @@
 ---
 - name: Installing tools & utils
-  yum:
+  apt:
     name: "{{ item }}"
     state: latest
   with_items:
-    - nc
     - telnet
     - tree
     - bc
@@ -12,5 +11,4 @@
     - nmap
     - wget
     - traceroute
-    - which
 ...
