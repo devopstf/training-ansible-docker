@@ -12,6 +12,7 @@ services:
       - ./:/projects/ansible
     ports:
       - "2211:22"
+      - "8081:80"
     networks:
       - devops
     restart: on-failure
@@ -23,6 +24,7 @@ services:
       - ./:/projects/ansible
     ports:
       - "2222:22"
+      - "8082:80"
     networks:
       - devops
     restart: on-failure
@@ -36,6 +38,7 @@ services:
       - ./:/projects/ansible
     ports:
       - "2233:22"
+      - "8083:80"
     networks:
       - devops
     restart: on-failure

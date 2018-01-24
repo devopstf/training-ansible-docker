@@ -1,12 +1,6 @@
-[localhost]
-127.0.0.1 ansible_connection=local
-
 [controller]
-devopsbox-01
+localhost ansible_connection=local
 
 [nodes]
-#devopsbox-01 ansible_ssh_host=192.168.88.101 ansible_user=vagrant ansible_ssh_private_key_file="~/.ssh/id_rsa"
-#devopsbox-02 ansible_ssh_host=192.168.88.102 ansible_user=vagrant ansible_ssh_private_key_file="~/.ssh/id_rsa"
-#devopsbox-03 ansible_ssh_host=192.168.88.103 ansible_user=vagrant ansible_ssh_private_key_file="~/.ssh/id_rsa"
-devopsbox-02
-devopsbox-03
+devopsbox-02 ansible_ssh_host=192.168.88.102 ansible_ssh_private_key_file="/vagrant/keys/ansible-lab"
+devopsbox-03 ansible_ssh_host=192.168.88.103 ansible_ssh_private_key_file="/vagrant/keys/ansible-lab"
