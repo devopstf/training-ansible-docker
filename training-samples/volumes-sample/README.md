@@ -1,10 +1,10 @@
-# Assignment: Named volumes
+# Tarea: volúmenes
 
-Goal: database upgrade with conatiners
+> Objetivo: actualización del motor de BB.DD. sin perder datos
 
-## Tasks
-- Create a ``postgres``container with a named volume psql-data, using `postgres 9.6.1`
-- Use Docker Hub to learn `VOLUME`path and versions you need.
-- Check logs, stop container
-- Create a new `postgres`container, with the same named volume, using the new version `postgres 9.6.2`
-- Check logs to validate everything is OK.
+## Indicaciones
+- Crearemos un contenedor `postgres` con un volumen `psql-data`, usando la imagen oficial `postgres 9.6.1`
+- Miraremos en _Docker Hub_ qué ruta necesitamos para los volúmenes.
+- Comprobamos los logs y paramos el contenedor.
+- Crearemos un nuevo contenedor `postgres`, con el mismo volumen asociado, usando esta vez la imagen oficial de la versión `postgres 9.6.2`.
+- Comprobamos los logs para ver que todo ha ido bien.

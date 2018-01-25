@@ -1,1 +1,2 @@
-# Create your drupal and postgres config here
+# Drupal con base de datos PostgreSQL para levantar con docker-compose
+# La descripción guiada está en el fichero README.md que hay en la carpeta

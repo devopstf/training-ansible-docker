@@ -1,44 +1,43 @@
-# Assignment: Create A Multi-Service Multi-Node Web App
+# Tarea: desplegaremos una aplicación multiservicio en nuestro cluster
 
-## Goal: create networks, volumes, and services for a web-based "cats vs. dogs" voting app.
+## Objetivo: crear redes, volúmenes y servicios para desplegar una aplicación de ejemplo "cats vs dogs.
 
-- See architecture.png in this directory for a basic diagram of how the 5 services will work
-- All images are on Docker Hub, so you should use editor to craft your commands locally, then paste them into swarm shell (at least that's how I'd do it)
-- a `backend` and `frontend` overlay network are needed. Nothing different about them other then that backend will help protect datatbase from the voting web app. (similar to how a VLAN setup might be in traditional architecture)
-- The database server should use a named volume for perserving data. Use the new `--mount` format to do this: `--mount type=volume,source=db-data,target=/var/lib/postgresql/data`
+- En el diagrama architecture.png se puede ver cómo interactúan los cinco servicios que componen la aplicación.
+- Todas las imágenes están en _Docker Hub_
+- Necesitaremos dos redes superpuestas, `backend` y `frontend`, básicamente para que los datos no estén accesibles desde el front-end web.
+- La persistencia para la BB.DD. la configuramos con: `--mount type=volume,source=db-data,target=/var/lib/postgresql/data`
 
-### Services (names below should be service names)
+### Servicios
 - vote
-    - dockersamples/examplevotingapp_vote:before
-    - web front end for users to vote dog/cat
-    - ideally published on TCP 80. Container listens on 80
-    - on frontend network
-    - 2+ replicas of this container
+    - `dockersamples/examplevotingapp_vote:before`
+    - la web donde los usuarios votarán _dog/cat_
+    - publicará el puerto TCP 80. El contenedor escucha en el puerto 80
+    - red `frontend`
+    - mínimo 2 réplicas
 
 - redis
-    - redis:3.2
-    - key/value storage for incoming votes
-    - no public ports
-    - on frontend network
-    - 1 replica NOTE VIDEO SAYS TWO BUT ONLY ONE NEEDED
+    - `redis:3.2`
+    - almacén clave/valor para guardar los votos
+    - no publica puerto alguno
+    - red `frontend`
+    - 1 réplica
 
 - worker
-    - dockersamples/examplevotingapp_worker
-    - backend processor of redis and storing results in postgres
-    - no public ports
-    - on frontend and backend networks
-    - 1 replica
+    - `dockersamples/examplevotingapp_worker`
+    - procesa los datos de redis y los almacena en la BB.DD.
+    - no publica puertos
+    - redes `frontend` y `backend`
+    - 1 réplica
 
 - db
-    - postgres:9.4
-    - one named volume needed, pointing to /var/lib/postgresql/data
-    - on backend network
-    - 1 replica
+    - `postgres:9.4`
+    - un volumen, apuntando a `/var/lib/postgresql/data`
+    - red `backend`
+    - 1 réplica
 
 - result
-    - dockersamples/examplevotingapp_result:before
-    - web app that shows results
-    - runs on high port since just for admins (lets imagine)
-    - so run on a high port of your choosing (I choose 5001), container listens on 80
-    - on backend network
-    - 1 replica
+    - `dockersamples/examplevotingapp_result:before`
+    - web donde se muestran los resultados de las votaciones
+    - es un servicio que escuchará en un puerto alto (e.g. 5001). El contenedor escuchará en el 80.
+    - red `backend`
+    - 1 réplica

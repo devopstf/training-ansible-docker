@@ -1,13 +1,12 @@
-# Assignment: Writing a Compose File
+# Tarea: escribir un fichero para docker-compose
 
-> Goal: Create a compose config for a local Drupal CMS website
+> Objetivo: Crear un script para levantar una instalación en local del CMS Drupal
 
-- This empty directory is where you should create a docker-compose.yml 
-- Use the `drupal` image along with the `postgres` image
-- Set the version to 2
-- Use `ports` to expose Drupal on 8080
-- Be sure to setup POSTGRES_PASSWORD on postgres image
-- Walk though Drupal config in browser at http://localhost:8080
-- Tip: Drupal assumes DB is localhost, but it will actually be on the compose service name you give it
-- Use Docker Hub documentation to figure out the right environment and volume settings
-- Extra Credit: Use volumes to store Drupal unique data
+- Editaremos el fichero docker-compose.yml que hay en la carpeta. 
+- Usaremos las imágenes oficiales de `drupal` y `postgres` de _Docker Hub_.
+- Usaremos la versión `2`de la sintaxis de YAML.
+- Drupal escuchará en el puerto 8080.
+- Debemos asegurarnos de que asignamos una contraseña para acceder a la BB.DD., usando la variable de entorno `POSTGRES_PASSWORD` en la imagen de `postgres`.
+- Realizaremos la configuración del Drupal utilizando el _Wizard_ vía navegador, en la dirección http://localhost:8080
+- Drupal considera que la BB.DD. está en local, i.e. `localhost`, pero en vuestro caso su nombre será el del servicio que pongáis en el _script_.
+- Leer y escribir son habilidades muy poco valoradas: repasad la documentación de la imagen oficial de Drupal en _Docker Hub_ para ver qué volúmenes necesitan persistencia y qué variables de entorno necesitamos.

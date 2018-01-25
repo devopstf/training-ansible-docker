@@ -1,1 +1,1 @@
-# create your custom drupal image here, based of official drupal
+# Crearemos nuestra imagen a medida partiendo de la imagen oficial de Drupal
