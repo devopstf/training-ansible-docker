@@ -1,4 +1,4 @@
-# Tarea: desplegaremos una aplicación multiservicio en nuestro cluster
+# Ejercicio práctico: desplegaremos una aplicación multiservicio en nuestro cluster
 
 ## Objetivo: crear redes, volúmenes y servicios para desplegar una aplicación de ejemplo "cats vs dogs.
 
@@ -41,3 +41,5 @@
     - es un servicio que escuchará en un puerto alto (e.g. 5001). El contenedor escuchará en el 80.
     - red `backend`
     - 1 réplica
+
+> *Fuente:* Adaptado del curso _Udemy_ [_Docker Mastery_](https://www.udemy.com/docker-mastery/learn/v4/content), de [Brent Fisher](https://www.bretfisher.com/)

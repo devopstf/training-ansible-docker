@@ -25,3 +25,6 @@
 # - procuramos dejarlo todo limpio después de instalar, con 'npm cache clean --force'
 # - luego hay que copiar todos los ficheros de la carpeta
 # - el contenedor arrancará con la orden 'tini -- node ./bin/www'
+
+# Este ejercicio ha sido tomado del curso _Udemy_ [_Docker Mastery_](https://www.udemy.com/docker-mastery/learn/v4/content)
+# elaborado por [Brent Fisher](https://www.bretfisher.com/)
