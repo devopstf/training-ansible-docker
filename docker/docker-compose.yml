@@ -1,6 +1,6 @@
 # Creating three services based on CentOS 7 image built from our Dockerfile
 
-version: '3.0'
+version: '2'
 
 services:
 
@@ -9,7 +9,7 @@ services:
     image: devopsman/devopsbox:dev
     container_name: devopsbox-01
     volumes:
-      - ./:/projects/ansible
+      - ./ansible:/projects/ansible
     ports:
       - "2211:22"
       - "8081:80"
@@ -21,7 +21,7 @@ services:
     image: devopsman/devopsbox:dev
     container_name: devopsbox-02
     volumes:
-      - ./:/projects/ansible
+      - ./ansible:/projects/ansible
     ports:
       - "2222:22"
       - "8082:80"
@@ -35,7 +35,7 @@ services:
     image: devopsman/devopsbox:dev
     container_name: devopsbox-03 
     volumes:
-      - ./:/projects/ansible
+      - ./ansible:/projects/ansible
     ports:
       - "2233:22"
       - "8083:80"

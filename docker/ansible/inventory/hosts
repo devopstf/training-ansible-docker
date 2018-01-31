@@ -4,3 +4,6 @@ localhost ansible_connection=local
 [nodes]
 devopsbox-02
 devopsbox-03
+
+[aws]
+35.176.1.104

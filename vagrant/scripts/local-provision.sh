@@ -1,1 +1,0 @@
-ansible-playbook -b -i localhost ./ansible/playbook.yml
