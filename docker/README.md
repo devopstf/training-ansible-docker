@@ -17,3 +17,16 @@ The three boxes are connected to the same ``devops``network that is defined with
 ## _Ansible_ Hands-On Lab (HOL)
 
 We include here a simple Ansible config file, ``ansible.cfg``, the inventory containing the three nodes defined for this setup, and a sample playbook based on one single Ansible role.
+
+### Getting into the containers
+
+You can either use the publised ports for getting into the Ububtu running boxes...
+
+```
+ssh -p [2211|2222|2233] devopsman:devopsman@localhost
+```
+... or executing an interactive container bash
+
+```
+docker container exec -it devopsbox-[01|02|03] bash
+```
