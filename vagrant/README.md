@@ -7,3 +7,15 @@ A simple script for generating SSH key pairs is included within ``scripsts``fold
 The ``ansible``folder contains, on one hand the local provision script ``playbook.ml`` apart from the roles it needs and, in the other hand, the **Ansible HOL** assets for training purposes.
 
 Issuing ``vagrant up``command will bring up the three CentOS boxes provisioned with ``ansible``, ``docker``, ``git``, and a few basic tools, and ``devopsman``user created as sudoer with no password.
+
+### Getting into Vagrant boxes
+
+```
+vagrant ssh devopsbox-[01|02|03]
+```
+
+### Stoping & saving machine's state
+
+```
+vagrant suspend devopsbox-[01|02|03]
+```
