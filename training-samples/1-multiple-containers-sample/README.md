@@ -2,7 +2,7 @@
 
 ## Objetivo: repasar la ejecución básica de contenedores con varios servicios.
 
-- Levantaremos tres servicores: un `nginx` que nos hará de proxy, `mysql` como BB.DD., y un servidor web con Apache `httpd`. 
+- Levantaremos tres servidores: un `nginx` que nos hará de proxy, `mysql` como BB.DD., y un servidor web con Apache `httpd`. 
 - Los levantaremos en modo `--detached`, y les pondremos nombre `--name`.
 - `nginx`escuchará en el puerto `80`, el Apache en el `8080`, y `mysql` usará el puerto estándar `3306`.
 - En el caso de `mysql`, usaremos `--env` para pasarle el valor `MYSQL_RANDOM_ROOT_PASSWORD=yes` de forma que genere una contraseña aleatorio para el usuario `root`al arrancar.
