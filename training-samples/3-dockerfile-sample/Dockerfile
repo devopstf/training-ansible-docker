@@ -16,24 +16,14 @@
 
 # Indicaciones del equipo de desarrollo
 # - deberíamos utilizar la imagen oficial de 'node', con la etiqueta alpine 6.x
-FROM node:6-alpine
 # - La aplicación escucha en el puerto 3000, pero el contenedor debería publicar el servicio en el puerto 80
-EXPOSE 3000
 #   de manera que responda en http://localhost:80
 # - luego instalaremos tini con el gestor de paquetes de Alpine: 'apk add --update tini'
-RUN apk add --update tini
 # - meteremos los ficheros de la aplicación en un directorio /usr/src/app que debemos crear 'mkdir -p /usr/src/app'
-RUN mkdir -p /usr/src/app
 # - Node utiliza un gestor de paquetes, así que tenemos que copiar el fichero package.json
-COPY package.json /usr/src/app
 # - luego usaremos 'npm install' para instalar las dependencias de ese fichero
-RUN npm install && \
-    npm cache clean --force
-
-COPY . /usr/src/app
 # - procuramos dejarlo todo limpio después de instalar, con 'npm cache clean --force'
 # - luego hay que copiar todos los ficheros de la carpeta
 # - el contenedor arrancará con la orden 'tini -- node ./bin/www'
-CMD ["tini","--","node","./bin/www"]
 # Este ejercicio ha sido tomado del curso _Udemy_ [_Docker Mastery_](https://www.udemy.com/docker-mastery/learn/v4/content)
 # elaborado por [Brent Fisher](https://www.bretfisher.com/)
