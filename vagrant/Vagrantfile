@@ -43,6 +43,7 @@ Vagrant.configure("2") do |config|
   #config.ssh.insert_key = false
 
   config.vm.box = "centos/7"
+  Vagrant::DEFAULT_SERVER_URL.replace('https://app.vagrantup.com') 
 
   # enable hostmanager
   config.hostmanager.enabled = true
